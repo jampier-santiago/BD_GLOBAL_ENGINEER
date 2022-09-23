@@ -1,9 +1,17 @@
+// --- Dependencies ---
 const express = require("express");
 const bodyParser = require("body-parser"), port = 3000;
 const http = require("http"); 
 const path = require("path"); 
 
-const tipdoc = require("./src/rutas/TipDocRuta");
+// --- Rutas ---
+const rutas = require("./src/rutas");
+const { 
+  rutasPersonas, 
+  rutasInformes,
+  rutasProducciones,
+} = rutas;
+
 const app = express(); 
 
 app.set("port", process.env.PORT || port);
@@ -31,7 +39,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/tipdoc", tipdoc());
+app.use("/personas", rutasPersonas());
+app.use("/informes", rutasInformes());
+app.use("/producciones", rutasProducciones());
 
 http.createServer(app).listen(app.get("port"), () => {
   console.log(`Servidor Express escuchando por el puerto ${app.get("port")}`)
