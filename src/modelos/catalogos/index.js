@@ -1,6 +1,6 @@
 const connection = require("../../conexion");
 
-var catalogosModel = {};
+let catalogosModel = {};
 
 // Traer todos los catalogos
 catalogosModel.getTodosLosCatalogos = (callback) => {
