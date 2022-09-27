@@ -5,28 +5,28 @@ let catalogosModel = {};
 // Traer todos los catalogos
 catalogosModel.getTodosLosCatalogos = (callback) => {
   if(connection) {
-    const sql = `SELECT * FROM catalogo`;
+    const sql = `SELECT Id_Catalogo, Catalogo, Nombre_Catalogo FROM catalogo;`;
     
     connection.query(sql, (error, rows) => {
-      if(error) {
+      if (error) {
         throw error;
       } else {
-        callback(rows);
+        callback(null, rows);
       }
-    })
+    });
   }
 }
 
 // Traer un unico catalogo
 catalogosModel.getCatalogoPorId = (id, callback) => {
   if(connection) {
-    const sql = `SELECT * FROM catalogo WHERE Id_Catalogo = ${connection.escape(id)}`;
+    const sql = `SELECT Id_Catalogo, Catalogo, Nombre_Catalogo FROM catalogo WHERE Id_Catalogo = ${connection.escape(id)};`;
 
     connection.query(sql, (error, rows) => {
       if(error) {
         throw error;
       } else {
-        callback(null);
+        callback(null, rows);
       }
     })
   }
@@ -50,7 +50,10 @@ catalogosModel.insertCatalogo = (data, callback) => {
 // Actualizar registro
 catalogosModel.updateCatalogo = (data, callback) => {
   if(connection) {
-    const sql = ``;
+    const sql = `UPDATE catalogo SET Catalogo = ${connection.escape(data.Catalogo)},
+     Nombre_Catalogo = ${connection.escape(data.Nombre_Catalogo)}
+     WHERE Id_Catalogo = ${connection.escape(data.Id_Catalogo)};
+    `;
 
     connection.query(sql, () => {
       if(error) {
