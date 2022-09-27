@@ -3,12 +3,12 @@ const rutasPersonas = require("./personas");
 const rutasInformes = require("./informes");
 const rutasProducciones = require("./producciones");
 const rutasProductos = require("./productos")
+const rutasCatalogos = require("./catalogos");
 
-const rutas = { 
+module.exports = { 
   rutasPersonas, 
   rutasInformes,
   rutasProducciones,
   rutasProductos,
+  rutasCatalogos
 };
-
-export default rutas;
