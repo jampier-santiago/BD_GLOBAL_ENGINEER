@@ -33,7 +33,7 @@ module.exports = () => {
   router.post("/", (req, res) => {
     const data = {
       Id_Catalogo: req.body.Id_Catalogo,
-      Catalogo: req.body.Catalogo,
+      Tipo_Catalogo: req.body.Tipo_Catalogo,
       Nombre_Catalogo: req.body.Nombre_Catalogo
     }
 
@@ -50,7 +50,7 @@ module.exports = () => {
   router.put("/", (req, res) => {
     const data = {
       Id_Catalogo: req.body.Id_Catalogo,
-      Catalogo: req.body.Catalogo,
+      Tipo_Catalogo: req.body.Tipo_Catalogo,
       Nombre_Catalogo: req.body.Nombre_Catalogo
     }
 

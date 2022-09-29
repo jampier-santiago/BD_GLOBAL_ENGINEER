@@ -40,10 +40,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use("/personas", rutasPersonas());
+app.use("/catalogo", rutasCatalogos());
+app.use("/personas", rutasPersonas());
 // app.use("/informes", rutasInformes());
 // app.use("/producciones", rutasProducciones());
-app.use("/catalogo", rutasCatalogos());
 
 http.createServer(app).listen(app.get("port"), () => {
   console.log(`Servidor Express escuchando por el puerto ${app.get("port")}`)

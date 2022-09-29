@@ -5,7 +5,7 @@ let catalogosModel = {};
 // Traer todos los catalogos
 catalogosModel.getTodosLosCatalogos = (callback) => {
   if(connection) {
-    const sql = `SELECT Id_Catalogo, Catalogo, Nombre_Catalogo FROM catalogo;`;
+    const sql = `SELECT Id_Catalogo, Nombre_Catalogo, Tipo_Catalogo FROM ct_catalogo;`;
     
     connection.query(sql, (error, rows) => {
       if (error) {
@@ -20,7 +20,7 @@ catalogosModel.getTodosLosCatalogos = (callback) => {
 // Traer un unico catalogo
 catalogosModel.getCatalogoPorId = (id, callback) => {
   if(connection) {
-    const sql = `SELECT Id_Catalogo, Catalogo, Nombre_Catalogo FROM catalogo WHERE Id_Catalogo = ${connection.escape(id)};`;
+    const sql = `SELECT Id_Catalogo, Nombre_Catalogo, Tipo_Catalogo FROM ct_catalogo WHERE Id_Catalogo = ${connection.escape(id)};`;
 
     connection.query(sql, (error, rows) => {
       if(error) {
@@ -35,7 +35,7 @@ catalogosModel.getCatalogoPorId = (id, callback) => {
 // Insertar un catalogo
 catalogosModel.insertCatalogo = (data, callback) => {
   if(connection) {
-    const sql = `INSERT INTO catalogo SET ?`;
+    const sql = `INSERT INTO ct_catalogo SET ?`;
     
     connection.query(sql, data, (error, result) => {
       if(error) {
@@ -50,12 +50,13 @@ catalogosModel.insertCatalogo = (data, callback) => {
 // Actualizar registro
 catalogosModel.updateCatalogo = (data, callback) => {
   if(connection) {
-    const sql = `UPDATE catalogo SET Catalogo = ${connection.escape(data.Catalogo)},
-     Nombre_Catalogo = ${connection.escape(data.Nombre_Catalogo)}
-     WHERE Id_Catalogo = ${connection.escape(data.Id_Catalogo)};
+    const sql = `
+      UPDATE ct_catalogo SET Tipo_Catalogo = ${connection.escape(data.Tipo_Catalogo)}
+      , Nombre_Catalogo = ${connection.escape(data.Nombre_Catalogo)}
+       WHERE Id_Catalogo = ${connection.escape(data.Id_Catalogo)};
     `;
 
-    connection.query(sql, () => {
+    connection.query(sql, (error, result) => {
       if(error) {
         throw error;
       } else {
