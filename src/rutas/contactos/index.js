@@ -1,23 +1,22 @@
-// --- Dependencies ---
 const express = require("express");
 const router = express.Router();
 
-const catalogosModel = require("../../modelos/catalogos")
+const contactosModel = require("../../modelos/contactos");
 
 module.exports = () => {
-  // Get All catalogs
+  // Get all contacts
   router.get("/", (req, res) => {
-    catalogosModel.getTodosLosCatalogos((error, data) => {
+    contactosModel.getTodosLosContactos((data) => {
       res.status(200).json(data)
     })
   });
 
-  // Get one catalog by id
+  // Get one contact
   router.get("/:id", (req, res) => {
     const id = req.params.id;
 
     if(!isNaN(id)) {
-      catalogosModel.getCatalogoPorId(id, (error, data) => {
+      contactosModel.getUnContacto(id, (  data) => {
         if(typeof data !== 'undefined' && data.length > 0) {
           res.status(200).json(data);
         } else {
@@ -29,15 +28,16 @@ module.exports = () => {
     }
   })
 
-  // Insert new Catalog
+  // Insert contacts
   router.post("/", (req, res) => {
     const data = {
-      Id_Catalogo: req.body.Id_Catalogo,
-      Tipo_Catalogo: req.body.Tipo_Catalogo,
-      Nombre_Catalogo: req.body.Nombre_Catalogo
-    }
+      Id_Contactos: req.body.Id_Contactos,
+      Dato_Contacto: req.body.Dato_Contacto,
+      Encargado_Contacto: req.body.Encargado_Contacto,
+      Tipo_Contacto: req.body.Tipo_Contacto
+    };
 
-    catalogosModel.insertCatalogo(data, (error, data) => {
+    contactosModel.postInsertarContacto(data, (error, data) => {
       if(data) {
         res.status(200).json(data);
       } else {
@@ -46,22 +46,24 @@ module.exports = () => {
     });
   })
 
-  // Update catalog
+  // Update contact
   router.put("/", (req, res) => {
     const data = {
-      Id_Catalogo: req.body.Id_Catalogo,
-      Tipo_Catalogo: req.body.Tipo_Catalogo,
-      Nombre_Catalogo: req.body.Nombre_Catalogo
+      Id_Contactos: req.body.Id_Contactos,
+      Dato_Contacto: req.body.Dato_Contacto,
+      Encargado_Contacto: req.body.Encargado_Contacto,
+      Tipo_Contacto: req.body.Tipo_Contacto,
     }
 
-    catalogosModel.updateCatalogo(data, (error, data) => {
+    contactosModel.putActualizarContacto(data, (error, data) => {
       if(data && data.msg) {
         res.status(200).json(data);
       } else {
         res.status(500).send({error: "Boo :("});
       }
     })
-  })
+  });
+    
 
   return router;
 }

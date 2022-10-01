@@ -11,6 +11,8 @@ const {
   rutasInformes,
   rutasProducciones,
   rutasCatalogos,
+  rutasContactos,
+  rutasProductos,
 } = rutas;
 
 const app = express(); 
@@ -42,7 +44,8 @@ app.use((req, res, next) => {
 
 app.use("/catalogo", rutasCatalogos());
 app.use("/personas", rutasPersonas());
-// app.use("/informes", rutasInformes());
+app.use("/contactos", rutasContactos());
+app.use("/productos", rutasProductos());
 // app.use("/producciones", rutasProducciones());
 
 http.createServer(app).listen(app.get("port"), () => {

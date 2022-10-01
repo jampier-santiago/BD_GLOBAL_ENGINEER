@@ -5,7 +5,10 @@ let catalogosModel = {};
 // Traer todos los catalogos
 catalogosModel.getTodosLosCatalogos = (callback) => {
   if(connection) {
-    const sql = `SELECT Id_Catalogo, Nombre_Catalogo, Tipo_Catalogo FROM ct_catalogo;`;
+    const sql = `SELECT Id_Catalogo, 
+     Nombre_Catalogo, 
+     Tipo_Catalogo 
+     FROM ct_catalogo;`;
     
     connection.query(sql, (error, rows) => {
       if (error) {
@@ -20,7 +23,11 @@ catalogosModel.getTodosLosCatalogos = (callback) => {
 // Traer un unico catalogo
 catalogosModel.getCatalogoPorId = (id, callback) => {
   if(connection) {
-    const sql = `SELECT Id_Catalogo, Nombre_Catalogo, Tipo_Catalogo FROM ct_catalogo WHERE Id_Catalogo = ${connection.escape(id)};`;
+    const sql = `SELECT Id_Catalogo, 
+     Nombre_Catalogo, 
+     Tipo_Catalogo 
+     FROM ct_catalogo 
+     WHERE Id_Catalogo = ${connection.escape(id)};`;
 
     connection.query(sql, (error, rows) => {
       if(error) {

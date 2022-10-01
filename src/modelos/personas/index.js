@@ -5,7 +5,18 @@ var personasModel = {};
 // Get all persons
 personasModel.getTodasLasPersonas = (callback) => {
   if(connection) {
-    const sql = `SELECT Id_Encargado, Nom1_Encargado, Nom2_Encargado, Apell1_Encargado , Apell2_Encargado, Sexo_Encargado, FechaNacimiento_Encargado, Nombre_Catalogo as Tip_Doc_Encargado, num_Doc_Encargado, Rol_Encargado FROM tb_encargados JOIN ct_catalogo ON tb_encargados.Tip_Doc_Encargado = ct_catalogo.Id_Catalogo;`;
+    const sql = `SELECT e.Id_Encargado, 
+     Nom1_Encargado, Nom2_Encargado, 
+     Apell1_Encargado, 
+     Apell2_Encargado, 
+     Sexo_Encargado, 
+     FechaNacimiento_Encargado, 
+     d.Nombre_Catalogo as TIPO_identificacion, 
+     num_Doc_Encargado, 
+     c.Nombre_Catalogo as Rol_encargado 
+     FROM tb_encargados as e 
+     JOIN ct_catalogo d ON e.Tip_Doc_Encargado = d.Id_Catalogo 
+     JOIN ct_catalogo c ON e.Rol_Encargado = c.Id_Catalogo;`;
 
     connection.query(sql, (error, rows) => {
       if (error) {
@@ -20,7 +31,20 @@ personasModel.getTodasLasPersonas = (callback) => {
 // Get person by id
 personasModel.getPersonaPorId = (id, callback) => {
   if(connection) {
-    const sql = `SELECT Id_Encargado, Nom1_Encargado, Nom2_Encargado, Apell1_Encargado , Apell2_Encargado, Sexo_Encargado, FechaNacimiento_Encargado, Nombre_Catalogo as Tip_Doc_Encargado, num_Doc_Encargado, Rol_Encargado FROM tb_encargados JOIN ct_catalogo ON tb_encargados.Tip_Doc_Encargado = ct_catalogo.Id_Catalogo AND Id_Encargado = ${connection.escape(id)};`;
+    const sql = `SELECT e.Id_Encargado, 
+     Nom1_Encargado, 
+     Nom2_Encargado, 
+     Apell1_Encargado, 
+     Apell2_Encargado, 
+     Sexo_Encargado, 
+     FechaNacimiento_Encargado, 
+     d.Nombre_Catalogo as Tip_Doc_Encargado, 
+     num_Doc_Encargado, 
+     c.Nombre_Catalogo as Rol_Encargado 
+     FROM tb_encargados as e 
+     JOIN ct_catalogo d ON e.Tip_Doc_Encargado = d.Id_Catalogo 
+     JOIN ct_catalogo c ON e.Rol_Encargado = c.Id_Catalogo
+     AND Id_Encargado = ${connection.escape(id)};`;
   
     connection.query(sql, (error, rows) => {
       if (error) {
