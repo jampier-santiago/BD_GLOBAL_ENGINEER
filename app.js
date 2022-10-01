@@ -14,6 +14,7 @@ const {
   rutasContactos,
   rutasProductos,
   rutasIngredientes,
+  rutasIngredientes_productos,
 } = rutas;
 
 const app = express(); 
@@ -49,6 +50,7 @@ app.use("/contactos", rutasContactos());
 app.use("/productos", rutasProductos());
 app.use("/producciones", rutasProducciones());
 app.use("/ingredientes", rutasIngredientes());
+app.use("/materiales-productos", rutasIngredientes_productos());
 
 http.createServer(app).listen(app.get("port"), () => {
   console.log(`Servidor Express escuchando por el puerto ${app.get("port")}`)

@@ -6,11 +6,11 @@ var contactosModel = {};
 contactosModel.getTodosLosContactos = (callback) => {
   if(connection) {
     const sql = `SELECT Id_Contactos, 
-    Dato_Contacto, 
-    Encargado_Contacto, 
-    cat.Nombre_Catalogo AS Tipo_Contacto,
-    enc.Nom1_Encargado AS Nombre_contacto,
-    enc.Apell1_Encargado AS Apellido_Contacto
+     Dato_Contacto, 
+     Encargado_Contacto, 
+     cat.Nombre_Catalogo AS Tipo_Contacto,
+     enc.Nom1_Encargado AS Nombre_contacto,
+     enc.Apell1_Encargado AS Apellido_Contacto
      FROM am_contactos con
      JOIN ct_catalogo cat ON con.Tipo_Contacto = cat.Id_Catalogo
      JOIN tb_encargados enc ON con.Tipo_Contacto = enc.Id_Encargado;
