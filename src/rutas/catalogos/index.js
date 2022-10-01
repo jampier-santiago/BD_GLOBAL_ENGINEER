@@ -8,7 +8,7 @@ module.exports = () => {
   // Get All catalogs
   router.get("/", (req, res) => {
     catalogosModel.getTodosLosCatalogos((error, data) => {
-      res.status(200).json(data)
+      res.status(200).json(data);
     })
   });
 

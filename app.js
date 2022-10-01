@@ -46,7 +46,7 @@ app.use("/catalogo", rutasCatalogos());
 app.use("/personas", rutasPersonas());
 app.use("/contactos", rutasContactos());
 app.use("/productos", rutasProductos());
-// app.use("/producciones", rutasProducciones());
+app.use("/producciones", rutasProducciones());
 
 http.createServer(app).listen(app.get("port"), () => {
   console.log(`Servidor Express escuchando por el puerto ${app.get("port")}`)

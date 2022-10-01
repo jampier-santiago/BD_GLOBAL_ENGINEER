@@ -50,7 +50,7 @@ catalogosModel.insertCatalogo = (data, callback) => {
       } else {
         callback(null, { "msg": "Registro insertado" });
       } 
-    })
+    });
   }
 }
 
