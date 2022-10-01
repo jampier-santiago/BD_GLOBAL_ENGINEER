@@ -27,7 +27,7 @@ module.exports = () => {
     } else {
       res.status(500).json({"msg": "error"})
     }
-  })
+  });
 
   // Insert new Catalog
   router.post("/", (req, res) => {

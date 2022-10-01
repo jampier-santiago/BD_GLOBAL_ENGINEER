@@ -5,6 +5,7 @@ const rutasProducciones = require("./producciones");
 const rutasProductos = require("./productos");
 const rutasCatalogos = require("./catalogos");
 const rutasContactos = require("./contactos");
+const rutasIngredientes = require("./ingredientes");
 
 module.exports = { 
   rutasPersonas, 
@@ -13,4 +14,5 @@ module.exports = {
   rutasProductos,
   rutasCatalogos,
   rutasContactos,
+  rutasIngredientes,
 };
