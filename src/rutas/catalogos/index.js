@@ -17,7 +17,7 @@ module.exports = () => {
     const id = req.params.id;
 
     if(!isNaN(id)) {
-      catalogosModel.getCatalogoPorId(id, (error, data) => {
+      catalogosModel.getCatalogoPorId(id, (data) => {
         if(typeof data !== 'undefined' && data.length > 0) {
           res.status(200).json(data);
         } else {
@@ -37,7 +37,7 @@ module.exports = () => {
       Nombre_Catalogo: req.body.Nombre_Catalogo
     }
 
-    catalogosModel.insertCatalogo(data, (error, data) => {
+    catalogosModel.postCatalogo(data, (error, data) => {
       if(data) {
         res.status(200).json(data);
       } else {
@@ -54,7 +54,7 @@ module.exports = () => {
       Nombre_Catalogo: req.body.Nombre_Catalogo
     }
 
-    catalogosModel.updateCatalogo(data, (error, data) => {
+    catalogosModel.putCatalogo(data, (data) => {
       if(data && data.msg) {
         res.status(200).json(data);
       } else {

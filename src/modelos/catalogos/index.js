@@ -33,14 +33,14 @@ catalogosModel.getCatalogoPorId = (id, callback) => {
       if(error) {
         throw error;
       } else {
-        callback(null, rows);
+        callback(rows);
       }
     })
   }
 }
 
 // Insertar un catalogo
-catalogosModel.insertCatalogo = (data, callback) => {
+catalogosModel.postCatalogo = (data, callback) => {
   if(connection) {
     const sql = `INSERT INTO ct_catalogo SET ?`;
     
@@ -55,19 +55,19 @@ catalogosModel.insertCatalogo = (data, callback) => {
 }
 
 // Actualizar registro
-catalogosModel.updateCatalogo = (data, callback) => {
+catalogosModel.putCatalogo = (data, callback) => {
   if(connection) {
     const sql = `
-      UPDATE ct_catalogo SET Tipo_Catalogo = ${connection.escape(data.Tipo_Catalogo)}
-      , Nombre_Catalogo = ${connection.escape(data.Nombre_Catalogo)}
-       WHERE Id_Catalogo = ${connection.escape(data.Id_Catalogo)};
+      UPDATE ct_catalogo SET Tipo_Catalogo = ${connection.escape(data.Tipo_Catalogo)},
+      Nombre_Catalogo = ${connection.escape(data.Nombre_Catalogo)}
+      WHERE Id_Catalogo = ${connection.escape(data.Id_Catalogo)};
     `;
 
     connection.query(sql, (error, result) => {
       if(error) {
         throw error;
       } else {
-        callback(null, {"msg": "Registro actualizado"});
+        callback({"msg": "Registro actualizado"});
       }
     });
   }
