@@ -11,12 +11,12 @@ module.exports = () => {
     })
   });
 
-  // Get one contact
+  // Get contact by id
   router.get("/:id", (req, res) => {
     const id = req.params.id;
 
     if(!isNaN(id)) {
-      contactosModel.getUnContacto(id, (  data) => {
+      contactosModel.getContactoById(id, (  data) => {
         if(typeof data !== 'undefined' && data.length > 0) {
           res.status(200).json(data);
         } else {

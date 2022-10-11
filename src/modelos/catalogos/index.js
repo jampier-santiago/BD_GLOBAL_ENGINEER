@@ -73,4 +73,23 @@ catalogosModel.putCatalogo = (data, callback) => {
   }
 }
 
+
+// Consultar catalogos por sus tipos
+catalogosModel.getCatalogoPorTipo = (tipo, callback) => {
+  if(connection) {
+    const sql = `SELECT Id_Catalogo, 
+     Nombre_Catalogo 
+     FROM ct_catalogo 
+     WHERE Tipo_Catalogo = ${connection.escape(tipo)};`;
+
+     connection.query(sql, (error, rows) => {
+      if(error) {
+        throw error;
+      } else {
+        callback(rows);
+      }
+     })
+  }
+}
+
 module.exports = catalogosModel

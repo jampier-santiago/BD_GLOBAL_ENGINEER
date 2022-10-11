@@ -10,7 +10,7 @@ personasModel.getTodasLasPersonas = (callback) => {
      Apell1_Encargado, 
      Apell2_Encargado, 
      Sexo_Encargado, 
-     FechaNacimiento_Encargado, 
+     DATE_FORMAT(FechaNacimiento_Encargado, '%Y-%m-%d') AS FechaNacimiento_Encargado,
      d.Nombre_Catalogo as TIPO_identificacion, 
      num_Doc_Encargado, 
      c.Nombre_Catalogo as Rol_encargado 
@@ -37,7 +37,7 @@ personasModel.getPersonaPorId = (id, callback) => {
      Apell1_Encargado, 
      Apell2_Encargado, 
      Sexo_Encargado, 
-     FechaNacimiento_Encargado, 
+     DATE_FORMAT(FechaNacimiento_Encargado, '%Y-%m-%d') AS FechaNacimiento_Encargado,
      d.Nombre_Catalogo as Tip_Doc_Encargado, 
      num_Doc_Encargado, 
      c.Nombre_Catalogo as Rol_Encargado 

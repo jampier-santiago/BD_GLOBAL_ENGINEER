@@ -63,5 +63,22 @@ module.exports = () => {
     })
   })
 
+  // Get catalogo pro tipo
+  router.get("/tipos/data", (req, res) => {
+    const tipo = req.body.catalogType
+
+    // if(tipo) {
+      catalogosModel.getCatalogoPorTipo(tipo, (data) => {
+        if(typeof data !== 'undefined' && data.length > 0) {
+          res.status(200).json(data);
+        } else {
+          res.json(404, {"msg": "Registro no Existe"});
+        }
+      })
+    // } else {
+    //   res.status(500).json({"msg": "error"})
+    // }
+  });
+
   return router;
 }

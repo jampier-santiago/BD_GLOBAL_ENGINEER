@@ -6,7 +6,7 @@ let produccionesModel = {};
 produccionesModel.getAllProducts = (callback) => {
   if(connection) {
     const sql = `SELECT Id_Producción, 
-      Fecha_Produccion, 
+     DATE_FORMAT(Fecha_Produccion, '%Y-%m-%d') AS Fecha, 
       enc.Nom1_Encargado AS Nombre_encargado,
       enc.Apell1_Encargado AS Apellido_encargado,
       product.Nombre_Producto AS Nombre_Producto,
@@ -31,7 +31,7 @@ produccionesModel.getAllProducts = (callback) => {
 produccionesModel.getProductById = (id, callback) => {
   if(connection) {
     const sql = `SELECT Id_Producción, 
-    Fecha_Produccion, 
+    DATE_FORMAT(Fecha_Produccion, '%Y-%m-%d') AS Fecha,
     enc.Nom1_Encargado AS Nombre_encargado,
     enc.Apell1_Encargado AS Apellido_encargado,
     product.Nombre_Producto AS Nombre_Producto,
