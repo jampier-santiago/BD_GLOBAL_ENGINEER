@@ -31,7 +31,7 @@ module.exports = () => {
   // Insert contacts
   router.post("/", (req, res) => {
     const data = {
-      Id_Contactos: req.body.Id_Contactos,
+      Id_Contactos: null,
       Dato_Contacto: req.body.Dato_Contacto,
       Encargado_Contacto: req.body.Encargado_Contacto,
       Tipo_Contacto: req.body.Tipo_Contacto

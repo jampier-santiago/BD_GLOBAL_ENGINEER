@@ -32,7 +32,7 @@ module.exports = () => {
   // Insert data
   router.post("/", (req, res) => {
     const data = {
-      Id_ingredientes_productos: req.body.Id_ingredientes_productos,
+      Id_ingredientes_productos: null,
       IProducto_ingredientes_productos: req.body.IProducto_ingredientes_productos,
       ingrediente_ingredientes_productos: req.body.ingrediente_ingredientes_productos,
       cantidad_ingredientes_productos: req.body.cantidad_ingredientes_productos,

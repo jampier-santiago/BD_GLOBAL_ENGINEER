@@ -32,7 +32,7 @@ const rutasProductos = () => {
   // Post insert product
   router.post("/", (req, res) => {
     const data = {
-      Id_Producto: req.body.Id_Producto,
+      Id_Producto: null,
       Nombre_Producto: req.body.Nombre_Producto,
       Peso_Producto: req.body.Peso_Producto,
       Dimensiones_Producto: req.body.Dimensiones_Producto,

@@ -15,7 +15,7 @@ const rutasPersonas = () => {
   // Inset person
   router.post("/", (req, res) => {
     const data = {
-      Id_Encargado: req.body.Id_Encargado,
+      Id_Encargado: null,
       Nom1_Encargado: req.body.Nom1_Encargado,
       Nom2_Encargado: req.body.Nom2_Encargado,
       Apell1_Encargado: req.body.Apell1_Encargado,

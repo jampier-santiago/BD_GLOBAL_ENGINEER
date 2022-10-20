@@ -32,7 +32,7 @@ const rutasProducciones = () => {
   // POST Inser product
   router.post("/", (req, res) => {
     const data = {
-      Id_Producción: req.body.Id_Producción,
+      Id_Producción: null,
       Fecha_Produccion: req.body.Fecha_Produccion,
       Id_Empleado_Producción: req.body.Id_Empleado_Producción,
       Id_Producto_Producción: req.body.Id_Producto_Producción,

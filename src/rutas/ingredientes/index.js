@@ -32,7 +32,7 @@ module.exports = () => {
   // Insert ingredient
   router.post("/", (req, res) => {
     const data = {
-      Id_Ingrediente: req.body.Id_Ingrediente,
+      Id_Ingrediente: null,
       Nombre_Ingrediente: req.body.Nombre_Ingrediente,
       Proveedor_Ingrediente: req.body.Proveedor_Ingrediente,
       tel_Proveedor_Ingrediente: req.body.tel_Proveedor_Ingrediente,
