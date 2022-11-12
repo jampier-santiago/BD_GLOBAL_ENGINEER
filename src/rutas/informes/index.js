@@ -5,20 +5,22 @@ const router = express.Router();
 const informesModel = require("../../modelos/informes");
 
 module.exports = () => {
-  router.get("/", (req, res) => {
+  router.get("/:startDate/:finishDate/:id", (req, res) => {
     const dates = {
-      fecha_inicial: req.body.fecha_inicial,
-      fecha_final: req.body.fecha_final,
-    }
+      fecha_inicial: req.params.startDate,
+      fecha_final: req.params.finishDate,
+    };
 
-    informesModel.informeProduccion(dates, (error, data) => {
-      if(data) {
+    const id = req.params.id;
+
+    informesModel.informeProduccion(id, dates, (error, data) => {
+      if (data) {
         res.status(200).json(data);
       } else {
-        res.status(500).send({error});
+        res.status(500).send({ error });
       }
-    })
-  })
+    });
+  });
 
   return router;
 };
